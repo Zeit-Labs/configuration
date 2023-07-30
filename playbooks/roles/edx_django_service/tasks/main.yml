@@ -212,6 +212,16 @@
     - install
     - install:app-requirements
 
+- name: install Open edX Atlas translation tool
+  get_url:
+    url: "https://github.com/openedx/openedx-atlas/releases/download/v0.1.1/atlas"
+    # Even though Atlas is a bash script, it is installed in the virtualenv to avoid adding another PATH entry.
+    dest: "{{ edx_django_service_venv_dir }}/bin/atlas"
+  become_user: "{{ edx_django_service_user }}"
+  tags:
+    - install
+    - install:app-requirements
+
 - name: Check for existing make_migrate container
   command: "docker ps -aq --filter name='{{ edx_django_service_name }}.make_migrate'"
   register: edx_django_service_make_migrate_container
