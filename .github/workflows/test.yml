@@ -25,4 +25,4 @@ jobs:
     - name: Run Make test.syntax
       run: |
         timeout 90m make --keep-going docker.build.edxapp
-        docker run -it edxops/edxapp:latest atlas --help
+        docker run -t edxops/edxapp:latest atlas --help
