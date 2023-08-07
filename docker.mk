@@ -56,7 +56,7 @@ $(docker_pull)%:
 	docker pull $(subst @,:,$*)
 
 $(docker_build)%: docker/build/%/Dockerfile
-	docker build -f $< .
+	docker build -f $< -t edxops/$*:latest .
 
 $(docker_pkg)%: .build/%/Dockerfile.pkg
 	docker build -t $*:latest -f $< .

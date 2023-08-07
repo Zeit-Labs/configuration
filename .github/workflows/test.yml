@@ -1,10 +1,7 @@
-name: Syntax Test
+name: Playbook Test
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -27,4 +24,5 @@ jobs:
         pip install -r requirements.txt
     - name: Run Make test.syntax
       run: |
-        timeout 90m make --keep-going test.syntax
+        timeout 90m make --keep-going docker.build.edxapp
+        docker run -it edxops/edxapp:latest atlas --help
