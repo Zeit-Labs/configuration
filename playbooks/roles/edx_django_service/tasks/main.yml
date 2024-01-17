@@ -399,6 +399,16 @@
   tags:
     - install
     - install:system-requirements
+#
+#- name: perform atlas pull
+#  shell: ". {{ edxapp_app_dir }}/edxapp_env && {{ edxapp_venv_bin }}/make pull_translations"
+#  args:
+#    chdir: "{{ edxapp_code_dir }}"
+#  become_user: "{{ edxapp_user }}"
+#  when: edx_django_service_atlas_supported and OPENEDX_ATLAS_PULL
+#  tags:
+#    - atlas_pull
+#    - install
 
 - name: compile static assets
   command: "{{ edx_django_service_docker_run_command_make_static }} make static"
